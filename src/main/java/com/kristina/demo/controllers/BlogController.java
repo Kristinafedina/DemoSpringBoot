@@ -50,7 +50,7 @@ public class BlogController {
         List<Post> res = new ArrayList<>();
         post.ifPresent(res::add);
         model.addAttribute("post", res);
-        return "blog-add";
+        return "blog-details";
 
     }
 }
