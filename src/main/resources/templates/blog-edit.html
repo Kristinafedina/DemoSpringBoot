@@ -8,13 +8,15 @@
 <body>
 <header th:insert="blocks/header :: header"></header>
 <div class="container mt-5 mb-5">
-    <h1>Edit The Article</h1>
-    <form method="post">
-        <input type="text" name="title" placeholder="Enter your title" class="form-control"><br>
-        <input type="text" name="announcement" placeholder="Enter announcement" class="form-control"><br>
-        <textarea name="full_text" placeholder="Enter full text" class="form-control"></textarea><br>
-        <button type="submit" class="btn btn-success">Update</button>
-    </form>
+    <h1>Edit Article</h1>
+    <div th:each="el : ${post}">
+        <form method="post">
+            <input type="text" th:value="${el.title}" name="title" placeholder="Enter your title" class="form-control"><br>
+            <input type="text" th:value="${el.announcement}" name="announcement" placeholder="Enter announcement" class="form-control"><br>
+            <textarea name="full_text" placeholder="Enter full text" class="form-control" th:text="${el.full_text}" ></textarea><br>
+            <button type="submit" class="btn btn-success">Update</button>
+        </form>
+    </div>
 </div>
 <footer th:insert="blocks/footer :: footer"></footer>
 </body>
