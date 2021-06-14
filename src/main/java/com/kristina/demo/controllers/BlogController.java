@@ -46,6 +46,9 @@ public class BlogController {
         if(!postRepository.existsById(id)) {
             return "redirect:/blog";
         }
+        Post p = postRepository.findById(id).orElseThrow();
+        p.setViews(p.getViews() + 1);
+        postRepository.save(p);
         Optional<Post> post = postRepository.findById(id);
         List<Post> res = new ArrayList<>();
         post.ifPresent(res::add);
